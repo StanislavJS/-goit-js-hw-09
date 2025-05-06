@@ -1,4 +1,3 @@
-// 1. Об’єкт formData з порожніми значеннями
 let formData = {
   email: '',
   message: '',
@@ -9,7 +8,6 @@ const emailInput = form.elements.email;
 const messageInput = form.elements.message;
 const STORAGE_KEY = 'feedback-form-state';
 
-// 2. Перевірка localStorage при завантаженні
 const savedData = localStorage.getItem(STORAGE_KEY);
 if (savedData) {
   try {
@@ -23,7 +21,6 @@ if (savedData) {
   }
 }
 
-// 3. Відстеження input — делегування
 form.addEventListener('input', event => {
   const { name, value } = event.target;
 
@@ -33,7 +30,6 @@ form.addEventListener('input', event => {
   }
 });
 
-// 4. Submit — перевірка і очищення
 form.addEventListener('submit', event => {
   event.preventDefault();
 
@@ -44,7 +40,6 @@ form.addEventListener('submit', event => {
 
   console.log('Submitted:', formData);
 
-  // Очищення
   formData = { email: '', message: '' };
   localStorage.removeItem(STORAGE_KEY);
   form.reset();
